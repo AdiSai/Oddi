@@ -39,6 +39,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.android.support:design:26.+'
     compile 'com.jakewharton:butterknife:latest.release'
-    compile 'com.twilio.sdk:twilio:7.14.5'
-    //testCompile 'junit:junit:4.12'
+    compile 'com.twilio:chat-android:latest.release'
+    compile 'com.twilio:accessmanager-android:latest.release'
+    testCompile 'junit:junit:4.12'
 }
