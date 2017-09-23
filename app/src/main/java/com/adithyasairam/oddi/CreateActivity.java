@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.adithyasairam.oddi.pojos.Assignment;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -62,6 +63,10 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         });
+        Button button = (Button) findViewById(R.id.dateSelection);
+        final Calendar c = Calendar.getInstance();
+        button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ "," + c.get(Calendar.YEAR));
+
     }
 
 
@@ -70,7 +75,7 @@ public class CreateActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    class DatePickerFragment extends DialogFragment
+    static public class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
         @Override
@@ -87,8 +92,14 @@ public class CreateActivity extends AppCompatActivity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
+            final Calendar c = Calendar.getInstance();
             Button button = (Button) getActivity().findViewById(R.id.dateSelection);
-            button.setText("Year: "+view.getYear()+" Month: "+view.getMonth()+" Day: "+view.getDayOfMonth());
+            int selectedYear = view.getYear();
+            int selectedMonth = view.getMonth();
+            int selectedDay = view.getDayOfMonth();
+            c.set(Calendar.MONTH, selectedMonth);
+            button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + selectedDay+ ", " + selectedYear);
+            ;
 
         }
     }
