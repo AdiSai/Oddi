@@ -14,10 +14,10 @@
             android:label="@string/title_activity_create"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".classCreatorActivity"
+            android:name=".ClassCreatorActivity"
             android:label="@string/title_activity_class_creator"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".homePage">
+        <activity android:name=".HomePageActivity">
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar"
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".finalGrade"
+            android:name=".FinalGradeActivity"
             android:label="@string/title_activity_final_grade"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
