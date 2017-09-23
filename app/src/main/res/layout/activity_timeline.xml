@@ -1,13 +1,10 @@
-
-
-
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.adithyasairam.oddi.HomePageActivity">
+    tools:context="com.adithyasairam.oddi.TimelineActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -31,7 +28,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_add" />
 
-    <include layout="@layout/content_home_page" />
+    <include layout="@layout/content_timeline" />
 
 </android.support.design.widget.CoordinatorLayout>
 
