@@ -5,4 +5,10 @@
         <item>Exam</item>
         <item>Project</item>
     </string-array>
+    <string-array name="classCategories">
+        <item>Math</item>
+        <item>Science</item>
+        <item>English</item>
+        <item>Social Studies</item>
+    </string-array>
 </resources>

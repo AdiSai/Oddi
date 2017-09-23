@@ -2,20 +2,29 @@ package com.adithyasairam.oddi;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.adithyasairam.oddi.pojos.Assignment;
 
 import java.util.Calendar;
 
 public class CreateActivity extends AppCompatActivity {
 
+    private EditText mName;
     private EditText mDateEntryField;
+    private Spinner mCategoryType;
+    private Spinner mClassType;
+
+    String category;
+    String classType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +36,39 @@ public class CreateActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                String name = mName.getText().toString();
+                String date = mDateEntryField.getText().toString();
+                Assignment assignment = new Assignment(name, category, classType, date);
+                Log.d("ASSIGNMENT", assignment.toString());
             }
         });
         mDateEntryField = (EditText) findViewById(R.id.dateSelection);
+        mDateEntryField.addTextChangedListener(mDateEntryWatcher);
+        mName = (EditText) findViewById(R.id.nameText);
+        mCategoryType = (Spinner) findViewById(R.id.categoryType);
+        mCategoryType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                category = (String)adapterView.getItemAtPosition(i);
+            }
 
-        Spinner typeChooser = (Spinner) findViewById(R.id.categoryType);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+        mClassType = (Spinner) findViewById(R.id.classType);
+        mClassType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                classType = (String)adapterView.getItemAtPosition(i);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
     private TextWatcher mDateEntryWatcher = new TextWatcher() {
 
