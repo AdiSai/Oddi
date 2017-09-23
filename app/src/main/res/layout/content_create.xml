@@ -39,10 +39,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="90dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Spinner
         android:id="@+id/classType"
@@ -53,25 +54,42 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintTop_toBottomOf="@+id/categoryType"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <EditText
+    <Button
         android:id="@+id/dateSelection"
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/colorClear"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="231dp"
+        android:onClick="showDatePickerDialog"/>
+
+    <TextView
+        android:id="@+id/categoryTypeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="dd/mm/yyyy"
-        android:textColorHint="@color/colorPrimary"
-        android:inputType="date"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/classType"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:text="Assignment Category: "
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="65dp"
+        android:textSize="@dimen/textSize"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/classTypeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class: "
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="145dp"
+        android:textSize="@dimen/textSize"
+        android:textColor="@color/colorPrimary"
+        />
+
 
 </android.support.constraint.ConstraintLayout>

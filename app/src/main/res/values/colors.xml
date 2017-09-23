@@ -5,5 +5,5 @@
     <color name="buttonColor">#90283593</color>
     <color name="colorAccent">#0073D8</color>
     <color name="colorText">#FFFFFF</color>
-    <color name="colorClear">#FFFFFFFF</color>
+    <color name="colorClear">#00FFFFFF</color>
 </resources>
