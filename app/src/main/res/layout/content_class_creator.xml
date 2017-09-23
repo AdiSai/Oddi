@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.adithyasairam.oddi.classCreatorActivity"
+    tools:showIn="@layout/activity_class_creator">
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:text="Start Time:"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="180dp"
+        android:background="?android:attr/selectableItemBackground" />
+    />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:text="End Time:"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="244dp"
+        android:background="?android:attr/selectableItemBackground" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="-345dp"
+        tools:layout_editor_absoluteY="-418dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>

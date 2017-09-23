@@ -24,5 +24,45 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
     }
+    private TextWatcher mDateEntryWatcher = new TextWatcher() {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String working = s.toString();
+            boolean isValid = true;
+            if (working.length()==2 && before ==0) {
+                if (Integer.parseInt(working) < 1 || Integer.parseInt(working)>12) {
+                    isValid = false;
+                } else {
+                    working+="/";
+                    mDateEntryField.setText(working);
+                    mDateEntryField.setSelection(working.length());
+                }
+            }
+            else if (working.length()==7 && before ==0) {
+                String enteredYear = working.substring(3);
+                int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+                if (Integer.parseInt(enteredYear) < currentYear) {
+                    isValid = false;
+                }
+            } else if (working.length()!=7) {
+                isValid = false;
+            }
+
+            if (!isValid) {
+                mDateEntryField.setError("Enter a valid date: MM/YYYY");
+            } else {
+                mDateEntryField.setError(null);
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {}
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+    };
 
 }
