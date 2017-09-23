@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.Calendar;
 
@@ -31,6 +32,10 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
         mDateEntryField = (EditText) findViewById(R.id.dateSelection);
+
+        Spinner typeChooser = (Spinner) findViewById(R.id.categoryType);
+
+
     }
     private TextWatcher mDateEntryWatcher = new TextWatcher() {
 
