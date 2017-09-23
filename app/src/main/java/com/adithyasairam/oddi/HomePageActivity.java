@@ -23,6 +23,14 @@ public class HomePageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        fab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent (HomePageActivity.this, FinalGradeActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
 }

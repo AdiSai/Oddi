@@ -3,6 +3,17 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'META-INF/license.txt'
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/NOTICE.txt'
+        pickFirst 'META-INF/notice.txt'
+        pickFirst 'META-INF/DEPENDENCIES'
+        pickFirst 'META-INF/DEPENDENCIES.txt'
+        pickFirst 'META-INF/dependencies.txt'
+    }
     defaultConfig {
         applicationId "com.adithyasairam.oddi"
         minSdkVersion 21
@@ -28,6 +39,6 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.android.support:design:26.+'
     compile 'com.jakewharton:butterknife:latest.release'
-    //compile 'com.twilio.sdk:twilio:7.14.5'
+    compile 'com.twilio.sdk:twilio:7.14.5'
     //testCompile 'junit:junit:4.12'
 }
