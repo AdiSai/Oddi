@@ -5,7 +5,7 @@
         android:id="@+id/iconHamburger"
         android:icon="@drawable/hamburger"
         android:title="Menu"
-        app:showAsAction="always">
+        app:showAsAction="collapseActionView">
         <menu>
             <item
                 android:id="@+id/menuItemSettingsicon"
