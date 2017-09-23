@@ -96,7 +96,7 @@ public class CreateActivity extends AppCompatActivity {
             }
 
             if (!isValid) {
-                mDateEntryField.setError("Enter a valid date: MM/YYYY");
+                mDateEntryField.setError("Enter a valid date: MM/DD/YYYY");
             } else {
                 mDateEntryField.setError(null);
             }
