@@ -8,4 +8,41 @@
     tools:context="com.adithyasairam.oddi.finalGrade"
     tools:showIn="@layout/activity_final_grade">
 
+    <EditText
+        android:id="@+id/currentGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Weight of Final"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <EditText
+        android:id="@+id/goalGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Goal Grade"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <EditText
+        android:id="@+id/weightGrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Current Grade"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="61dp" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="348dp" />
 </android.support.constraint.ConstraintLayout>
