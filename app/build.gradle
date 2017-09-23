@@ -41,5 +41,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:latest.release'
     compile 'com.twilio:chat-android:latest.release'
     compile 'com.twilio:accessmanager-android:latest.release'
+    compile 'com.adithyasairam.android:android-commons:1.0.0'
     testCompile 'junit:junit:4.12'
 }
