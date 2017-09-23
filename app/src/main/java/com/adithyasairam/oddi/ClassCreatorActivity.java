@@ -12,9 +12,11 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ClassCreatorActivity extends AppCompatActivity {
+    static ArrayList<Integer[]> times =  new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,7 @@ public class ClassCreatorActivity extends AppCompatActivity {
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            // Do something with the time chosen by the user
+            times.add(new Integer[] {hourOfDay, minute});
         }
     }
 

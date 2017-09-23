@@ -7,22 +7,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.adithyasairam.oddi.pojos.Assignment;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -48,6 +48,20 @@ public class CreateActivity extends AppCompatActivity {
                 String date = mDateEntryField.getText().toString();
                 Assignment assignment = new Assignment(name, category, classType, date);
                 Log.d("ASSIGNMENT", assignment.toString());
+                Map<String, Assignment> assignmentMap =  new HashMap<>();
+                assignmentMap.put(assignment.key(), assignment);
+                try
+                {
+                    FileOutputStream fos = new FileOutputStream("assignment.ser");
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(assignmentMap);
+                    oos.close();
+                    fos.close();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
 

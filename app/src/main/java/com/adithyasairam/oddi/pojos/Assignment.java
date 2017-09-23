@@ -1,10 +1,12 @@
 package com.adithyasairam.oddi.pojos;
 
+import java.io.Serializable;
+
 /**
  * Created by AdiSai on 9/23/17.
  */
 
-public class Assignment {
+public class Assignment implements Serializable {
     private String assignmentName;
     private String assignmentType;
     private String assignmentClass;
@@ -57,5 +59,9 @@ public class Assignment {
                 ", assignmentClass='" + assignmentClass + '\'' +
                 ", dueDate=" + dueDate +
                 '}';
+    }
+
+    public String key() {
+        return "" + Math.random();
     }
 }

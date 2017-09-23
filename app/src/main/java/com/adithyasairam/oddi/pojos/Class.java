@@ -1,11 +1,12 @@
 package com.adithyasairam.oddi.pojos;
 
+import java.io.Serializable;
+
 /**
  * Created by AdiSai on 9/23/17.
  */
 
-public class Class
-{
+public class Class implements Serializable {
     private String name;
     private String starT;
     private String endT;
@@ -50,5 +51,9 @@ public class Class
     public String toString()
     {
         return name + " " +  starT + " " +  endT;
+    }
+
+    public String key() {
+        return "" + Math.random();
     }
 }
