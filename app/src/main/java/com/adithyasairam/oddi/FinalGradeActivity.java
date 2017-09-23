@@ -27,7 +27,7 @@ public class FinalGradeActivity extends AppCompatActivity {
             EditText gradeWeight = (EditText)findViewById(R.id.weightGrade);
                 float weight = Float.parseFloat(gradeWeight.getText().toString());
 
-            float neededGrade = (wantedGradeFloat - (100 - weight)*currentGradeFloat)/weight;
+            float neededGrade = ((wantedGradeFloat-currentGradeFloat*(100-wantedGradeFloat))/wantedGradeFloat);
                 TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
                 resultantView.setText(String.valueOf(neededGrade));
             }

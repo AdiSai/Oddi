@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#003563</color>
-    <color name="colorPrimaryDark">#003563</color>
+    <color name="colorPrimary">#283593</color>
+    <color name="colorPrimaryDark">#5f5fc4</color>
+    <color name="buttonColor">#90283593</color>
     <color name="colorAccent">#0073D8</color>
     <color name="colorText">#FFFFFF</color>
+    <color name="colorClear">#00FFFFFF</color>
+    <color name="colorSecondary">#626465</color>
+    <color name="colorHomework">#24B7FB</color>
+    <color name="colorExam">#F55B5B</color>
+    <color name="colorProject">#5A5A5A</color>
+    <color name="whiteText">#FFFFFF</color>
 </resources>

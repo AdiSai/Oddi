@@ -12,7 +12,7 @@
         android:id="@+id/editName"
         android:layout_width="0dp"
         android:layout_height="39dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="42dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Name:"
@@ -24,8 +24,8 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        android:textColorHint="@color/colorText"
-        android:background="@color/colorPrimary"/>
+        android:textColorHint="@color/colorPrimary"
+        android:background="@color/colorClear"/>
 
     <Button
         android:id="@+id/button"
@@ -41,8 +41,10 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
-        android:onClick="lmao"/>
-    />
+        android:onClick="showTimePicker"
+        android:textColor="@color/colorPrimary"
+        />
+
 
     <Button
         android:id="@+id/button2"
@@ -57,8 +59,10 @@
         app:layout_constraintTop_toBottomOf="@+id/button"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
+        tools:layout_constraintTop_creator="1"
+        android:onClick="showTimePicker"
+        android:textColor="@color/colorPrimary"
+        />
 
 
 </android.support.constraint.ConstraintLayout>
