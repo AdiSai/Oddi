@@ -18,23 +18,24 @@
             android:name=".ClassCreatorActivity"
             android:label="@string/title_activity_class_creator"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HomePageActivity">
-            android:label="@string/title_activity_home_page"
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".FinalGradeActivity"
+            android:label="@string/title_activity_final_grade"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TimelineActivity"
+            android:label="@string/title_activity_timeline"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FinalGradeActivity"
-            android:label="@string/title_activity_final_grade"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ChatActivity"
-            android:label="@string/title_activity_chat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
