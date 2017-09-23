@@ -7,4 +7,8 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorClear">#00FFFFFF</color>
     <color name="colorSecondary">#626465</color>
+    <color name="colorHomework">#24B7FB</color>
+    <color name="colorExam">#F55B5B</color>
+    <color name="colorProject">#5A5A5A</color>
+    <color name="whiteText">#FFFFFF</color>
 </resources>
