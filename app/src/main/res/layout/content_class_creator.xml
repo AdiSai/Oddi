@@ -42,7 +42,7 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1"
         android:onClick="showTimePicker"/>
-    />
+
 
     <Button
         android:id="@+id/button2"
@@ -58,7 +58,6 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
-
 
 
 </android.support.constraint.ConstraintLayout>
