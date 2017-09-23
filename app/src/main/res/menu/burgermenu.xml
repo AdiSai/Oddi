@@ -4,8 +4,8 @@
     <item
         android:id="@+id/iconHamburger"
         android:icon="@drawable/hamburger"
-        android:title="Menu"
-        app:showAsAction="collapseActionView">
+        android:title="menu"
+        app:showAsAction="always">
         <menu>
             <item
                 android:id="@+id/menuItemSettingsicon"
@@ -19,7 +19,7 @@
                 android:title="Classes"></item>
             <item
                 android:id="@+id/menuItemBugReporting"
-                android:icon="@drawable/ic_attach_money_black_24dp"
+                android:icon="@drawable/aplus"
                 android:onClick="openFGC"
                 android:title="Final Grade Calculator"></item>
 
