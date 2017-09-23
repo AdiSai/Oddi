@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/iconHamburger"
+        android:icon="@drawable/hamburger"
+        android:title="Menu"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menuItemSettingsicon"
+                android:icon="@drawable/ic_home"
+                android:onClick="launchSettings"
+                android:title="Timeline"></item>
+            <item
+                android:id="@+id/menuItemWebsite"
+                android:icon="@drawable/ic_classes"
+                android:onClick="launchBrowser"
+                android:title="Classes"></item>
+            <item
+                android:id="@+id/menuItemBugReporting"
+                android:icon="@drawable/ic_attach_money_black_24dp"
+                android:onClick="openFGC"
+                android:title="Final Grade Calculator"></item>
+
+        </menu>
+
+    </item>
+</menu>

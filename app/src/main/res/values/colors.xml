@@ -11,4 +11,5 @@
     <color name="colorExam">#F55B5B</color>
     <color name="colorProject">#5A5A5A</color>
     <color name="whiteText">#FFFFFF</color>
+    <color name="colorBackground">#19E0FF</color>
 </resources>
