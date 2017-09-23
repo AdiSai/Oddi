@@ -65,7 +65,7 @@ public class CreateActivity extends AppCompatActivity {
         });
         Button button = (Button) findViewById(R.id.dateSelection);
         final Calendar c = Calendar.getInstance();
-        button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ "," + c.get(Calendar.YEAR));
+        button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
 
     }
 
@@ -97,9 +97,11 @@ public class CreateActivity extends AppCompatActivity {
             int selectedYear = view.getYear();
             int selectedMonth = view.getMonth();
             int selectedDay = view.getDayOfMonth();
+            c.set(Calendar.YEAR, selectedYear);
             c.set(Calendar.MONTH, selectedMonth);
-            button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + selectedDay+ ", " + selectedYear);
-            ;
+            c.set(Calendar.DAY_OF_MONTH, selectedDay);
+
+            button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
 
         }
     }
