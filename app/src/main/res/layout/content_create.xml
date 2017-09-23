@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.adithyasairam.oddi.CreateActivity"
-    tools:showIn="@layout/activity_create">
+    tools:showIn="@layout/activity_create"
+    >
+
 
 
     <EditText
@@ -14,12 +16,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textColorHint="@color/colorText"
-        android:background="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:background="@color/colorClear"
         android:inputType="text"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="16dp"
-        android:hint="Name: "
+        android:hint="Name:"
         android:gravity="center"/>
 
     <Spinner
