@@ -3,4 +3,5 @@
     <string name="title_activity_create">CreateActivity</string>
     <string name="title_activity_class_creator_actvity">classCreatorActvity</string>
     <string name="title_activity_class_creator">classCreatorActivity</string>
+    <string name="title_activity_home_page">homePage</string>
 </resources>
