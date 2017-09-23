@@ -71,7 +71,7 @@ public class CreateActivity extends AppCompatActivity {
         });
     }
     private TextWatcher mDateEntryWatcher = new TextWatcher() {
-
+        //UPDATE ALGO TO ACCOUNT FOR MM/DD/YYYY NOT JUST MM/YYYY
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String working = s.toString();
@@ -100,7 +100,6 @@ public class CreateActivity extends AppCompatActivity {
             } else {
                 mDateEntryField.setError(null);
             }
-
         }
 
         @Override
