@@ -22,9 +22,9 @@ public class Class
         return name;
     }
 
-    public void setName(String x)
+    public void setName(String n)
     {
-        this.x = name;
+        this.name = n;
     }
 
     public String getStarT()
@@ -34,7 +34,7 @@ public class Class
 
     public void setstarT (String t)
     {
-        this.t = starT;
+        this.starT = t;
     }
 
     public String getendT()
@@ -44,7 +44,7 @@ public class Class
 
     public void setendT(String e)
     {
-        this.e = endT;
+        this.endT = e;
     }
 
     public String toString()
