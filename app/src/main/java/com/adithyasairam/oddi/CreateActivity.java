@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -50,19 +51,12 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
 
+        //populate spinners with values
+        Spinner assignmentType = (Spinner) findViewById(R.id.classType);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.itemCategories, R.layout.support_simple_spinner_dropdown_item);
+        assignmentType.setAdapter(adapter);
 
-        mClassType = (Spinner) findViewById(R.id.classType);
-        mClassType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                classType = (String) adapterView.getItemAtPosition(i);
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
         Button button = (Button) findViewById(R.id.dateSelection);
         final Calendar c = Calendar.getInstance();
         button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
