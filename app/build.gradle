@@ -43,4 +43,5 @@ dependencies {
     compile 'com.twilio:accessmanager-android:latest.release'
     compile 'com.adithyasairam.android:android-commons:1.0.0'
     testCompile 'junit:junit:4.12'
+    compile 'com.koushikdutta.ion:ion:2.2.1'
 }
