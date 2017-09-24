@@ -102,16 +102,18 @@ public class CreateActivity extends AppCompatActivity {
                     }
 
                     //once saved, do the message thing
-                    StringBuilder phoneNumBuilder = new StringBuilder();
-                    for (String s : phoneNums) {
-                        phoneNumBuilder.append(s + "; ");
+                    if(!phoneNums.isEmpty()) {
+                        StringBuilder phoneNumBuilder = new StringBuilder();
+                        for (String s : phoneNums) {
+                            phoneNumBuilder.append(s + "; ");
+                        }
+                        phoneNumBuilder = phoneNumBuilder.delete(phoneNumBuilder.length() - 2, phoneNumBuilder.length());
+                        Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                        i.putExtra("address", phoneNumBuilder.toString());
+                        i.putExtra("sms_body", "This group chat is for the " + category + " project.");
+                        i.setType("vnd.android-dir/mms-sms");
+                        startActivity(i);
                     }
-                    phoneNumBuilder = phoneNumBuilder.delete(phoneNumBuilder.length() - 2, phoneNumBuilder.length());
-                    Intent i = new Intent(android.content.Intent.ACTION_VIEW);
-                    i.putExtra("address", phoneNumBuilder.toString());
-                    i.putExtra("sms_body", "This group chat is for the " + category + " project.");
-                    i.setType("vnd.android-dir/mms-sms");
-                    startActivity(i);
                 }
             }
         });
