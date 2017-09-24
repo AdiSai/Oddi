@@ -8,6 +8,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -76,7 +78,15 @@ public class CreateActivity extends AppCompatActivity {
         button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
 
     }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
 
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.timeline,menu);
+        inflater.inflate(R.menu.classes,menu);
+        inflater.inflate(R.menu.finalgradecalculator,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();

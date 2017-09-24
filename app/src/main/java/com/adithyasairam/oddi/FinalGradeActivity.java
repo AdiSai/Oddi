@@ -6,6 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +34,7 @@ public class FinalGradeActivity extends AppCompatActivity {
                 float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
                 if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
                 {
-                    float neededGrade = ((weight*wantedGradeFloat+weight*currentGradeFloat-1*currentGradeFloat)/weight)*100;
+                    float neededGrade = ((wantedGradeFloat+(weight*currentGradeFloat)-(1*currentGradeFloat))/weight)*100;
                     TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
                     resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
                             "% in order to get a " + Float.toString(wantedGradeFloat*100) + "% in the class. Good Luck!" );
@@ -45,6 +47,15 @@ public class FinalGradeActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+
+        MenuInflater inflater2 = getMenuInflater();
+        inflater2.inflate(R.menu.timeline,menu);
+        inflater2.inflate(R.menu.classes,menu);
+        inflater2.inflate(R.menu.finalgradecalculator,menu);
+        return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item)
     {
