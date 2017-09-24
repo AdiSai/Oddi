@@ -19,6 +19,7 @@ import com.adithyasairam.oddi.pojos.Class;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -60,8 +61,8 @@ public class TimelineActivity extends AppCompatActivity {
             ArrayList<Assignment> assignmentList = new ArrayList<>(assignmentMap.values());
 
 
-            final List<String> dataList = dataSheet.getDataPoints(defaultName);
-            listView.setAdapter(new SpreadsheetDisplayAdapter(DataEntryActivity.this, headersList, dataList));
+            final String[] classesList = (String[]) assignmentList.toArray();
+            listView.setAdapter(new SpreadsheetDisplayAdapter(TimelineActivity.this, classesList, dataList));
 
             Log.i("TEStING", assignmentList.toString());
 
