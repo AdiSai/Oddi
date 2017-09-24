@@ -84,6 +84,8 @@ public class CreateActivity extends AppCompatActivity {
                 if(!isAnyPointEmpty) {
                     String name = mName.getText().toString();
                     String date = mDateEntryField.getText().toString();
+                    category = mCategoryType.getSelectedItem().toString();
+                    classType = mClassType.getSelectedItem().toString();
                     Assignment assignment = new Assignment(name, category, classType, date);
                     Log.d("ASSIGNMENT", assignment.toString());
                     assignmentList = new ArrayList<>();
