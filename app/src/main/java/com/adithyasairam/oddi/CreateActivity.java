@@ -32,7 +32,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -87,6 +86,7 @@ public class CreateActivity extends AppCompatActivity {
                     String date = mDateEntryField.getText().toString();
                     Assignment assignment = new Assignment(name, category, classType, date);
                     Log.d("ASSIGNMENT", assignment.toString());
+                    assignmentList = new ArrayList<>();
                     Map<String, Assignment> assignmentMap = new HashMap<>();
                     for (Assignment a : assignmentList) { assignmentMap.put(a.key(), a); }
                     assignmentMap.put(assignment.key(), assignment);
@@ -127,7 +127,6 @@ public class CreateActivity extends AppCompatActivity {
                 if ("Project".equals(selectedVal)){
                     LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
                     collabLayout.setVisibility(View.VISIBLE);
-                    category  = assignmentType.getSelectedItem().toString();
                 }
                 else{
                     LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
@@ -164,25 +163,9 @@ public class CreateActivity extends AppCompatActivity {
 
 
 
-            final Spinner classSpinner = (Spinner) findViewById(R.id.classType);
+            Spinner classSpinner = (Spinner) findViewById(R.id.classType);
             ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, classList.toArray());
-            //ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this, R.array.classCategories, R.layout.support_simple_spinner_dropdown_item);
-            classSpinner.setAdapter(adapter2);
-            classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    String selectedVal = assignmentType.getItemAtPosition(i).toString();
-                    LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
-                    collabLayout.setVisibility(View.VISIBLE);
-                    classType = classSpinner.getSelectedItem().toString();
 
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
 
         } catch (Exception e) {
             e.printStackTrace();
