@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,11 +15,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.adithyasairam.oddi.pojos.Class;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ClassCreatorActivity extends AppCompatActivity {
     static ArrayList<Integer[]> times =  new ArrayList<>();
@@ -32,10 +37,13 @@ public class ClassCreatorActivity extends AppCompatActivity {
     private static int endHour;
     private static int endMinute;
 
+    EditText mName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_creator);
+        mName = (EditText)findViewById(R.id.editName);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -43,7 +51,25 @@ public class ClassCreatorActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //save file to file dirs
+                String name = mName.getText().toString();
+                String start = startHour + ":" + endHour;
+                String end = endHour + ":" + endMinute;
+                Class clazz =  new Class(name, start, end);
+                Log.d("CLASS", clazz.toString());
+                Map<String, Class> classMap =  new HashMap<>();
+                classMap.put(clazz.key(), clazz);
+                try
+                {
+                    FileOutputStream fos = new FileOutputStream("class.ser");
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(classMap);
+                    oos.close();
+                    fos.close();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
 

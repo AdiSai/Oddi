@@ -1,6 +1,5 @@
 package com.adithyasairam.oddi;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.adithyasairam.oddi.pojos.Assignment;
+import com.adithyasairam.oddi.pojos.Class;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -25,6 +25,7 @@ public class TimelineActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
 
     Map<String, Assignment> assignmentMap = null;
+    Map<String, Class> classMap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class TimelineActivity extends AppCompatActivity {
             FileInputStream fis = new FileInputStream("assignment.ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             assignmentMap = (Map<String, Assignment>) ois.readObject();
+            fis = new FileInputStream("class.ser");
+            ois = new ObjectInputStream(fis);
+            classMap = (Map<String, Class>) ois.readObject();
         } catch (Exception e) {
             e.printStackTrace();
         }
