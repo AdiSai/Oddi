@@ -30,11 +30,18 @@ public class FinalGradeActivity extends AppCompatActivity {
                 float wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString())/100);
             EditText gradeWeight = (EditText)findViewById(R.id.weightGrade);
                 float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
+                if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
+                {
+                    float neededGrade = ((weight*wantedGradeFloat+weight*currentGradeFloat-1*currentGradeFloat)/weight)*100;
+                    TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
+                    resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
+                            "% in order to get a " + Float.toString(wantedGradeFloat*100) + "% in the class. Good Luck!" );
 
-            float neededGrade = ((weight*wantedGradeFloat+weight*currentGradeFloat-1*currentGradeFloat)/weight)*100;
-                TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
-                resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
-                        "% in order to get a " + Float.toString(wantedGradeFloat*100) + "% in the class. Good Luck!" );
+                }
+                else {
+
+                    Snackbar.make(findViewById(R.id.FGC), "Please fill in all the fields!", Snackbar.LENGTH_SHORT);
+                }
             }
         });
 
