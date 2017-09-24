@@ -51,10 +51,10 @@ public class FinalGradeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.timeline,menu);
-        inflater.inflate(R.menu.classes,menu);
-        inflater.inflate(R.menu.finalgradecalculator,menu);
+        MenuInflater inflater2 = getMenuInflater();
+        inflater2.inflate(R.menu.timeline,menu);
+        inflater2.inflate(R.menu.classes,menu);
+        inflater2.inflate(R.menu.finalgradecalculator,menu);
         return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item)
