@@ -160,12 +160,18 @@ public class CreateActivity extends AppCompatActivity {
             ObjectInputStream ois = new ObjectInputStream(fis);
             Map<String, Class> classMap = (Map<String, Class>) ois.readObject();
             ArrayList<Class> classList = new ArrayList<Class>(classMap.values());
-            File file2 = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
-            FileInputStream fis2 = new FileInputStream(file2);
-            ObjectInputStream ois2 = new ObjectInputStream(fis2);
-            Map<String, Assignment> assignmentMap = (Map<String, Assignment>) ois2.readObject();
-            assignmentList = new ArrayList<Assignment>(assignmentMap.values());
 
+            File file2 = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
+
+            if(file2.exists()) {
+                FileInputStream fis2 = new FileInputStream(file2);
+                ObjectInputStream ois2 = new ObjectInputStream(fis2);
+                Map<String, Assignment> assignmentMap = (Map<String, Assignment>) ois2.readObject();
+                assignmentList = new ArrayList<Assignment>(assignmentMap.values());
+            }
+            else{
+                assignmentList = new ArrayList<>(0);
+            }
 
             Spinner classSpinner = (Spinner) findViewById(R.id.classType);
             ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, classList.toArray());
