@@ -9,7 +9,8 @@
     tools:showIn="@layout/activity_final_grade"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp"
-    android:background="@color/whiteText">
+    android:background="@color/whiteText"
+    android:id = "@+id/FGC">
 
     <EditText
         android:id="@+id/currentGrade"
