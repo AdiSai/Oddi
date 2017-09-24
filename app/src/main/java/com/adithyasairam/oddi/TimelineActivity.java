@@ -12,18 +12,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.adithyasairam.oddi.Adapters.RecyclerAdapter;
 import com.adithyasairam.oddi.pojos.Assignment;
 import com.adithyasairam.oddi.pojos.Class;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class TimelineActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
+    private RecyclerAdapter recyclerAdapter;
 
     Map<String, Assignment> assignmentMap = null;
     Map<String, Class> classMap = null;
@@ -43,9 +45,7 @@ public class TimelineActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mLinearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
         try {
             File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
             FileInputStream fis = new FileInputStream(file);
@@ -55,6 +55,12 @@ public class TimelineActivity extends AppCompatActivity {
             fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
             classMap = (Map<String, Class>) ois.readObject();
+            ArrayList<Assignment> assignmentList = new ArrayList<>(assignmentMap.values());
+
+
+            mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            recyclerAdapter = new RecyclerAdapter(assignmentList);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
