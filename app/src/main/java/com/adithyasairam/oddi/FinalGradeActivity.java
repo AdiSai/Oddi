@@ -34,7 +34,7 @@ public class FinalGradeActivity extends AppCompatActivity {
                 float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
                 if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
                 {
-                    float neededGrade = (((wantedGradeFloat - currentGradeFloat + (currentGradeFloat * weight))/weight)*100);
+                    float neededGrade = ((((currentGradeFloat) * (1 - weight)) + ((wantedGradeFloat) * 100)
 
                     TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
                     resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
