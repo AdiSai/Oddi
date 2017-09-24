@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TimePicker;
 
 import java.util.ArrayList;
@@ -31,6 +32,11 @@ public class ClassCreatorActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
+
+            Button startButton = (Button) findViewById(R.id.startTimeButton);
+            startButton.setOnClickListener
+
+
         });
     }
     public void showTimePickerDialog(View v)

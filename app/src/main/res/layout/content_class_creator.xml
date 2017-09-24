@@ -28,12 +28,11 @@
         android:background="@color/colorClear"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startTimeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:background="?android:attr/selectableItemBackground"
-        android:onClick="showTimePickerDialog"
         android:text="Start Time:"
         android:textColor="@color/colorPrimary"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,12 +45,11 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/endTimeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:background="?android:attr/selectableItemBackground"
-        android:onClick="showTimePickerDialog"
         android:text="End Time:"
         android:textColor="@color/colorPrimary"
         app:layout_constraintHorizontal_bias="0.0"
