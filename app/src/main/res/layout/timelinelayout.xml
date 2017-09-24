@@ -3,7 +3,11 @@
     android:id="@+id/itemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingEnd="12dp"
+    android:paddingStart="12dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
 
     <TextView
         android:id="@+id/ClassAndType"
@@ -11,7 +15,8 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="@dimen/textSize"
-        android:textColor="@color/whiteText" />
+        android:textColor="@color/whiteText"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/Name"
