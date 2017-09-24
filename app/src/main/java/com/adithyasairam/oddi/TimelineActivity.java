@@ -11,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import com.adithyasairam.oddi.Adapters.RecyclerAdapter;
+import com.adithyasairam.oddi.Adapters.TimeLineAdapter;
 import com.adithyasairam.oddi.pojos.Assignment;
 import com.adithyasairam.oddi.pojos.Class;
 
@@ -25,9 +27,6 @@ import java.util.List;
 import java.util.Map;
 
 public class TimelineActivity extends AppCompatActivity {
-
-    private RecyclerView mRecyclerView;
-    private RecyclerAdapter recyclerAdapter;
 
     Map<String, Assignment> assignmentMap = null;
     Map<String, Class> classMap = null;
@@ -60,9 +59,9 @@ public class TimelineActivity extends AppCompatActivity {
             ArrayList<Class> classList = new ArrayList<>(classMap.values());*/
             ArrayList<Assignment> assignmentList = new ArrayList<>(assignmentMap.values());
 
-
+            ListView listView = (ListView) findViewById(R.id.timelineListView);
             final String[] classesList = (String[]) assignmentList.toArray();
-            listView.setAdapter(new SpreadsheetDisplayAdapter(TimelineActivity.this, classesList, dataList));
+            listView.setAdapter(new TimeLineAdapter(TimelineActivity.this, assignmentList));
 
             Log.i("TEStING", assignmentList.toString());
 
