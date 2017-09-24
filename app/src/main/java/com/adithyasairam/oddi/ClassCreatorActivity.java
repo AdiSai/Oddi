@@ -52,9 +52,11 @@ public class ClassCreatorActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String start = "";
+                String end = "";
+
                 String name = mName.getText().toString();
-                String start = startHour + ":" + endHour;
-                String end = endHour + ":" + endMinute;
+
                 Class clazz =  new Class(name, start, end);
                 Log.d("CLASS", clazz.toString());
                 Map<String, Class> classMap =  new HashMap<>();
@@ -110,6 +112,7 @@ public class ClassCreatorActivity extends AppCompatActivity {
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
 
+
             // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,
                     DateFormat.is24HourFormat(getActivity()));
@@ -118,11 +121,34 @@ public class ClassCreatorActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             if(isStartTime){
                 Button startButton = (Button) instance.findViewById(R.id.startTimeButton);
-                startButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute));
+                if (minute == 0)
+                {
+                    startButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute)+"0");
+                }
+                else if (minute<10)
+                {
+                    startButton.setText(Integer.toString(hourOfDay) + ":" + "0" +  Integer.toString(minute));
+                }
+                else
+                {
+                    startButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute));
+                }
             }
             else if (!isStartTime){
+
                 Button endButton = (Button) instance.findViewById(R.id.endTimeButton);
-                endButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute));
+                if (minute == 0)
+                {
+                    endButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute)+"0");
+                }
+                else if (minute<10)
+                {
+                    endButton.setText(Integer.toString(hourOfDay) + ":" + "0" +  Integer.toString(minute));
+                }
+                else
+                {
+                    endButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute));
+                }
             }
         }
     }
