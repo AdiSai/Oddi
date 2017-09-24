@@ -2,6 +2,7 @@ package com.adithyasairam.oddi;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,13 +28,16 @@ public class FinalGradeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             EditText currentGrade = (EditText)findViewById(R.id.currentGrade);
-                float currentGradeFloat = (Float.parseFloat(currentGrade.getText().toString())/100);
             EditText wantedGrade = (EditText)findViewById(R.id.goalClassGrade);
-                float wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString())/100);
             EditText gradeWeight = (EditText)findViewById(R.id.weightGrade);
-                float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
-                if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
+                if ((currentGrade.getText().toString() != null && !"".equals(currentGrade.getText().toString()) &&
+                        (wantedGrade.getText().toString() != null && !"".equals(wantedGrade.getText().toString())) &&
+                        (gradeWeight.getText().toString() != null && !"".equals(gradeWeight.getText().toString()))))
                 {
+                    float currentGradeFloat = (Float.parseFloat(currentGrade.getText().toString())/100);
+                    float wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString())/100);
+                    float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
+
                     float neededGrade = ((weight*wantedGradeFloat+weight*currentGradeFloat-1*currentGradeFloat)/weight)*100;
                     TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
                     resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
@@ -41,8 +45,8 @@ public class FinalGradeActivity extends AppCompatActivity {
 
                 }
                 else {
-
-                    Snackbar.make(findViewById(R.id.FGC), "Please fill in all the fields!", Snackbar.LENGTH_SHORT);
+                    CoordinatorLayout layout = (CoordinatorLayout) findViewById(R.id.FGC);
+                    //Snackbar.make(layout, "Please fill in all the fields!", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });

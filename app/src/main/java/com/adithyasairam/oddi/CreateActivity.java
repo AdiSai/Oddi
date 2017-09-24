@@ -90,7 +90,7 @@ public class CreateActivity extends AppCompatActivity {
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+        newFragment.show(getSupportFragmentManager(), "DatePicker");
     }
 
     static public class DatePickerFragment extends DialogFragment
