@@ -98,10 +98,10 @@ public class ClassCreatorActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
 
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.timeline,menu);
-        inflater.inflate(R.menu.classes,menu);
-        inflater.inflate(R.menu.finalgradecalculator,menu);
+        MenuInflater inflater3 = getMenuInflater();
+        inflater3.inflate(R.menu.timeline,menu);
+        inflater3.inflate(R.menu.classes,menu);
+        inflater3.inflate(R.menu.finalgradecalculator,menu);
         return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item)
