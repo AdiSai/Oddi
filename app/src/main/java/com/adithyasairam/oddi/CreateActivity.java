@@ -43,7 +43,7 @@ import java.util.Map;
 public class CreateActivity extends AppCompatActivity {
 
     private EditText mName;
-    private EditText mDateEntryField;
+    private Button mDateEntryField;
     private Spinner mCategoryType;
     private Spinner mClassType;
 
@@ -65,6 +65,7 @@ public class CreateActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mTextView = (TextView) findViewById(R.id.collaboratorTV);
+        mDateEntryField = (Button) findViewById(R.id.dateSelection);
         phoneNums = new ArrayList<>();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -73,8 +74,8 @@ public class CreateActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //input verification
-                EditText nameText = (EditText) findViewById(R.id.nameText);
-                boolean isNameEmpty = (null == nameText.getText() || "".equals(nameText.getText()));
+                mName = (EditText) findViewById(R.id.nameText);
+                boolean isNameEmpty = (null == mName.getText() || "".equals(mName.getText()));
 
                 Button dateButton = (Button) findViewById(R.id.dateSelection);
                 boolean isInvalidDate = (dateButton.getText().toString().equals("DATE"));
