@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.adithyasairam.oddi.R;
 import com.adithyasairam.oddi.pojos.Assignment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,8 +48,6 @@ public class TimeLineAdapter extends BaseAdapter {
     public View getView(int index, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         final int position = index;//todo fix workaround
-        //View list;
-
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -60,25 +57,14 @@ public class TimeLineAdapter extends BaseAdapter {
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.textView.setText(assignmentList.get(index));
-
-        //checks for updates in the text in order to keep them changed in the ListView
-        viewHolder.editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus){
-
-                    EditText editText = (EditText) v.findViewById(R.id.valueText);
-                    dataList.set(position, editText.getText().toString());
-                }
-            }
-        });
-
-
+        TextView title = (TextView) convertView.findViewById(R.id.ClassAndType);
+        title.setText(assignmentList.get(index).getAssignmentClass() + " - "+
+                assignmentList.get(index).getAssignmentType());
+        TextView name = (TextView) convertView.findViewById(R.id.Name);
+        name.setText(assignmentList.get(index).getAssignmentName());
+        TextView date = (TextView) convertView.findViewById(R.id.Date);
+        date.setText(assignmentList.get(index).getDueDate());
         return convertView;
-    }
-
-    public String getDataPoint(int p){
-        return dataList.get(p);
     }
 
     class ViewHolder{
