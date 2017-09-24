@@ -41,6 +41,7 @@ public class TimelineActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
        public boolean onCreateOptionsMenu(Menu menu)
     {
 
@@ -51,8 +52,8 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mLinearLayoutManager = new LinearLayoutManager(this);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         try {
             FileInputStream fis = new FileInputStream("assignment.ser");
