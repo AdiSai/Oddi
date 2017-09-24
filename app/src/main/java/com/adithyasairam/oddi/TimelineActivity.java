@@ -61,14 +61,28 @@ public class TimelineActivity extends AppCompatActivity {
         inflater.inflate(R.menu.finalgradecalculator,menu);
         return super.onCreateOptionsMenu(menu);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.timeLine:
+                break;
+            case R.id.classes:
+                Intent intent = new Intent(TimelineActivity.this, ClassCreatorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.FGC:
+                Intent intent1 = new Intent (TimelineActivity.this, FinalGradeActivity.class);
+                startActivity(intent1);
+                break;
+            default: break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 
 
 
         //todo load classes and assignments from file
-
-
-    public void openFGC(View view) {
-        Intent intent = new Intent(TimelineActivity.this, FinalGradeActivity.class);
-        startActivity(intent);
-    }
 }

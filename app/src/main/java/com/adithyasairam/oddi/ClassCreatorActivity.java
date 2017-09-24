@@ -2,6 +2,7 @@ package com.adithyasairam.oddi;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -90,6 +92,25 @@ public class ClassCreatorActivity extends AppCompatActivity {
                 endButton.setText(Integer.toString(hourOfDay) + ":" + Integer.toString(minute));
             }
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.timeLine:
+                Intent intent = new Intent(ClassCreatorActivity.this, TimelineActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.classes:
+                break;
+            case R.id.FGC:
+                Intent intent1 = new Intent (ClassCreatorActivity.this, FinalGradeActivity.class);
+                startActivity(intent1);
+                break;
+            default: break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

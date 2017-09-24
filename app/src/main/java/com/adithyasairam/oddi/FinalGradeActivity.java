@@ -1,10 +1,12 @@
 package com.adithyasairam.oddi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,25 @@ public class FinalGradeActivity extends AppCompatActivity {
                         "% in order to get a " + Float.toString(wantedGradeFloat*100) + "% in the class. Good Luck!" );
             }
         });
+
+    }
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.timeLine:
+                Intent intent1 = new Intent (FinalGradeActivity.this, TimelineActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.classes:
+                Intent intent = new Intent(FinalGradeActivity.this, ClassCreatorActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.FGC:
+                break;
+            default: break;
+        }
+        return super.onOptionsItemSelected(item);
 
     }
 
