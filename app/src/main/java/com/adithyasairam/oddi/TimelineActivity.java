@@ -15,6 +15,7 @@ import android.view.View;
 import com.adithyasairam.oddi.pojos.Assignment;
 import com.adithyasairam.oddi.pojos.Class;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Map;
@@ -46,10 +47,12 @@ public class TimelineActivity extends AppCompatActivity {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         try {
-            FileInputStream fis = new FileInputStream("assignment.ser");
+            File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
+            FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
             assignmentMap = (Map<String, Assignment>) ois.readObject();
-            fis = new FileInputStream("class.ser");
+            file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "class.ser");
+            fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
             classMap = (Map<String, Class>) ois.readObject();
         } catch (Exception e) {

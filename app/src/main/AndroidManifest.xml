@@ -3,7 +3,7 @@
     package="com.adithyasairam.oddi">
 
     <application
-        android:name=".twilio.OddiApp"
+        android:name=".OddiApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

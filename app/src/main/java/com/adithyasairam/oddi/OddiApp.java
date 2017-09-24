@@ -1,4 +1,4 @@
-package com.adithyasairam.oddi.twilio;
+package com.adithyasairam.oddi;
 
 import android.app.Application;
 import android.os.Handler;
@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
+import com.adithyasairam.android.android_commons.RealStoragePathLibrary;
 import com.twilio.chat.ErrorInfo;
+
+import java.io.File;
 
 /**
  * Created by AdiSai on 9/23/17.
@@ -25,6 +28,21 @@ public class OddiApp extends Application {
         super.onCreate();
         OddiApp.instance = this;
         basicClient = new com.adithyasairam.oddi.twilio.BasicChatClient(getApplicationContext());
+    }
+
+
+    public static File getAppDir() {
+        RealStoragePathLibrary storagePathLibrary = new RealStoragePathLibrary(instance.getApplicationContext());
+        File appDir = new File(storagePathLibrary.getInbuiltStorageAppSpecificDirectoryPath());
+        appDir.mkdirs();
+        return appDir;
+    }
+
+    public static File getInternalDataDir() {
+        File appDir = getAppDir();
+        File objectDir = new File(appDir.getAbsolutePath() + "/InternalData");
+        objectDir.mkdirs();
+        return objectDir;
     }
 
     public static OddiApp get()

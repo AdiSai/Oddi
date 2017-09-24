@@ -11,7 +11,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +27,7 @@ import android.widget.TextView;
 
 import com.adithyasairam.oddi.pojos.Assignment;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -87,7 +87,8 @@ public class CreateActivity extends AppCompatActivity {
                     Map<String, Assignment> assignmentMap = new HashMap<>();
                     assignmentMap.put(assignment.key(), assignment);
                     try {
-                        FileOutputStream fos = new FileOutputStream("assignment.ser");
+                        File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
+                        FileOutputStream fos = new FileOutputStream(file);
                         ObjectOutputStream oos = new ObjectOutputStream(fos);
                         oos.writeObject(assignmentMap);
                         oos.close();

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 
 import com.adithyasairam.oddi.BuildConfig;
+import com.adithyasairam.oddi.OddiApp;
 import com.twilio.accessmanager.AccessManager;
 import com.twilio.chat.CallbackListener;
 import com.twilio.chat.ChatClient;

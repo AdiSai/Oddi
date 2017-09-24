@@ -1,5 +1,6 @@
 package com.adithyasairam.oddi.twilio;
 
+import com.adithyasairam.oddi.OddiApp;
 import com.twilio.chat.ErrorInfo;
 import com.twilio.chat.StatusListener;
 

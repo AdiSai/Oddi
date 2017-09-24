@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 
 import com.adithyasairam.oddi.pojos.Class;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -60,7 +61,8 @@ public class ClassCreatorActivity extends AppCompatActivity {
                 classMap.put(clazz.key(), clazz);
                 try
                 {
-                    FileOutputStream fos = new FileOutputStream("class.ser");
+                    File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "class.ser");
+                    FileOutputStream fos = new FileOutputStream(file);
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(classMap);
                     oos.close();
