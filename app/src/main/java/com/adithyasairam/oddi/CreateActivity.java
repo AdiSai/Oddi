@@ -72,7 +72,7 @@ public class CreateActivity extends AppCompatActivity {
         Spinner assignmentType = (Spinner) findViewById(R.id.categoryType);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.itemCategories, R.layout.support_simple_spinner_dropdown_item);
         assignmentType.setAdapter(adapter);
-
+        //hello
 
         Button button = (Button) findViewById(R.id.dateSelection);
         final Calendar c = Calendar.getInstance();
