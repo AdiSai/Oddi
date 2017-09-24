@@ -27,9 +27,9 @@ public class FinalGradeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             EditText currentGrade = (EditText)findViewById(R.id.currentGrade);
-                float currentGradeFloat = (Float.parseFloat(currentGrade.getText().toString()));
+                float currentGradeFloat = (Float.parseFloat(currentGrade.getText().toString()))/100;
             EditText wantedGrade = (EditText)findViewById(R.id.goalClassGrade);
-                float wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString()));
+                float wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString()))/100;
             EditText gradeWeight = (EditText)findViewById(R.id.weightGrade);
                 float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
                 if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
