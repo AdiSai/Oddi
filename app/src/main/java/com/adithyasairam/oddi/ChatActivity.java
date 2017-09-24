@@ -79,6 +79,6 @@ public class ChatActivity extends AppCompatActivity {
                         }
                     }
                 });
-        return token[0];
+        return "token"; //token[0];
     }
 }
