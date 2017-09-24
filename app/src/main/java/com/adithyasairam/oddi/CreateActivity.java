@@ -105,7 +105,7 @@ public class CreateActivity extends AppCompatActivity {
                     phoneNumBuilder = phoneNumBuilder.delete(phoneNumBuilder.length() - 2, phoneNumBuilder.length());
                     Intent i = new Intent(android.content.Intent.ACTION_VIEW);
                     i.putExtra("address", phoneNumBuilder.toString());
-                    i.putExtra("sms_body", "This group chat is for the (X) project");
+                    i.putExtra("sms_body", "This group chat is for the " + category + " project.");
                     i.setType("vnd.android-dir/mms-sms");
                     startActivity(i);
                 }
