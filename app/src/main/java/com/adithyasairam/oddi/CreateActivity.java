@@ -32,6 +32,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -153,11 +154,18 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
         try {
-            File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
+            File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "class.ser");
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Map<String, Assignment> assignmentMap = (Map<String, Assignment>) ois.readObject();
-            assignmentList = new ArrayList<>(assignmentMap.values());
+            Map<String, Class> classMap = (Map<String, Class>) ois.readObject();
+            ArrayList<Class> classList = new ArrayList<Class>(classMap.values());
+
+
+
+            Spinner classSpinner = (Spinner) findViewById(R.id.classType);
+            ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, classList.toArray());
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
