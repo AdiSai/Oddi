@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -55,6 +54,7 @@ public class TimelineActivity extends AppCompatActivity {
             fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
             classMap = (Map<String, Class>) ois.readObject();
+            ArrayList<Class> classList = new ArrayList<>(classMap.values());
             ArrayList<Assignment> assignmentList = new ArrayList<>(assignmentMap.values());
 
 

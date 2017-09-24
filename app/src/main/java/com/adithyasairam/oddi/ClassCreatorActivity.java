@@ -21,7 +21,9 @@ import android.widget.TimePicker;
 import com.adithyasairam.oddi.pojos.Class;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,6 +39,7 @@ public class ClassCreatorActivity extends AppCompatActivity {
     private static int startMinute;
     private static int endHour;
     private static int endMinute;
+    ArrayList<Class> classList;
 
     EditText mName;
 
@@ -58,6 +61,7 @@ public class ClassCreatorActivity extends AppCompatActivity {
                 Class clazz =  new Class(name, start, end);
                 Log.d("CLASS", clazz.toString());
                 Map<String, Class> classMap =  new HashMap<>();
+                for (Class c: classList) { classMap.put(c.key(), c); }
                 classMap.put(clazz.key(), clazz);
                 try
                 {
@@ -74,7 +78,16 @@ public class ClassCreatorActivity extends AppCompatActivity {
                 }
             }
         });
+        try {
+            File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "class.ser");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Map<String, Class> classMap = (Map<String, Class>) ois.readObject();
+            classList = new ArrayList<>(classMap.values());
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         final Button startButton = (Button) findViewById(R.id.startTimeButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override

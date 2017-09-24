@@ -28,7 +28,9 @@ import android.widget.TextView;
 import com.adithyasairam.oddi.pojos.Assignment;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,8 +51,7 @@ public class CreateActivity extends AppCompatActivity {
     String category;
     String classType;
     TextView mTextView;
-
-
+    ArrayList<Assignment> assignmentList;
     List<String> phoneNums;
     final int SELECT_PHONE_NUMBER =  1;
 
@@ -85,6 +86,7 @@ public class CreateActivity extends AppCompatActivity {
                     Assignment assignment = new Assignment(name, category, classType, date);
                     Log.d("ASSIGNMENT", assignment.toString());
                     Map<String, Assignment> assignmentMap = new HashMap<>();
+                    for (Assignment a : assignmentList) { assignmentMap.put(a.key(), a); }
                     assignmentMap.put(assignment.key(), assignment);
                     try {
                         File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
@@ -109,8 +111,15 @@ public class CreateActivity extends AppCompatActivity {
                     i.setType("vnd.android-dir/mms-sms");
                     startActivity(i);
                 }
-
-
+                try {
+                    File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
+                    FileInputStream fis = new FileInputStream(file);
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    Map<String, Assignment> assignmentMap = (Map<String, Assignment>) ois.readObject();
+                    assignmentList = new ArrayList<>(assignmentMap.values());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
