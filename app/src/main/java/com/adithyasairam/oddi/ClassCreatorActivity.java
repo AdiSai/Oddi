@@ -33,7 +33,7 @@ public class ClassCreatorActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        Button button = (Button) findViewById(R.id.startTimeButton);
     }
     public void showTimePickerDialog(View v)
     {
