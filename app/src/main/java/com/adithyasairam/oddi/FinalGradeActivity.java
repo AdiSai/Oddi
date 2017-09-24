@@ -34,18 +34,44 @@ public class FinalGradeActivity extends AppCompatActivity {
                 float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
                 if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
                 {
-                    float neededGrade = ((((currentGradeFloat) * (1 - weight)) + ((wantedGradeFloat) * 100)));
+                    float need = wantedGradeFloat-currentGradeFloat+(currentGradeFloat*weight);
+                    float neededGrade = (need/weight)*100;
 
                     TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
-                    resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
-                            "% in order to get a " + Float.toString(wantedGradeFloat*100) + "% in the class. Good Luck!" );
+
+                    if (neededGrade>90)
+                    {
+                        resultantView.setText("You need a " + String.format("%.2f", neededGrade)+ "%. " + "Go study for your final, you're going to need to....");
+                    }
+                    else if (neededGrade>80)
+                    {
+                        resultantView.setText("You need a " + String.format("%.2f", neededGrade)+ "%. " + "Final should not be TOO bad for you");
+                    }
+                    else if (neededGrade>70)
+                    {
+                        resultantView.setText("You need a " + String.format("%.2f", neededGrade)+ "%. " + "So nice that you can relax after a semester of hard work now");
+                    }
+                    else if (neededGrade>60)
+                    {
+                        resultantView.setText("You need a " + String.format("%.2f", neededGrade)+ "%. " + "Great job the past semester");
+                    }
+                    else
+                    {
+                        resultantView.setText("You need a " + String.format("%.2f", neededGrade)+ "%. " + "Bubble in random answers..??");
+                    }
 
                 }
-                else {
+                else
+
+                {
 
                     Snackbar.make(findViewById(R.id.FGC), "Please fill in all the fields!", Snackbar.LENGTH_SHORT);
                 }
+                wantedGradeFloat = 0;
+                weight = 0;
+                currentGradeFloat = 0;
             }
+
         });
 
     }

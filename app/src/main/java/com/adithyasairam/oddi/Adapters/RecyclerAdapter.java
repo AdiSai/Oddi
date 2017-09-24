@@ -16,6 +16,9 @@ import com.adithyasairam.oddi.pojos.Assignment;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by Murali on 9/23/2017.
@@ -76,7 +79,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
 
     public RecyclerAdapter(ArrayList<Assignment> assignments){
+        List<Assignment> assignmentList = assignments;
+        Collections.sort(assignments,new Comparator<Assignment>() {
+
+
+            @Override
+            public int compare(Assignment a1, Assignment a2) {
+                if (a1.equals(a2)) {
+                    return 0;
+                }
+                return a1.getDueDate().compareTo(a2.getDueDate());
+            }
+        });
         this.assignmentsList = assignments;
+
+
+
     }
 
 
