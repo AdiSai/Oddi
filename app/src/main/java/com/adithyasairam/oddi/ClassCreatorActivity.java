@@ -32,12 +32,8 @@ public class ClassCreatorActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-
-            Button startButton = (Button) findViewById(R.id.startTimeButton);
-            startButton.setOnClickListener
-
-
         });
+
     }
     public void showTimePickerDialog(View v)
     {
