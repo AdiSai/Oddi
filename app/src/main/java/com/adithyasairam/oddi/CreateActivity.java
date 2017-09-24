@@ -169,7 +169,7 @@ public class CreateActivity extends AppCompatActivity {
 
             Spinner classSpinner = (Spinner) findViewById(R.id.classType);
             ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, classList.toArray());
-
+            classSpinner.setAdapter(adapter2);
 
         } catch (Exception e) {
             e.printStackTrace();
