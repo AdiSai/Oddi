@@ -3,6 +3,7 @@ package com.adithyasairam.oddi;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -68,7 +69,7 @@ public class CreateActivity extends AppCompatActivity {
         });
 
         //populate spinners with values
-        Spinner assignmentType = (Spinner) findViewById(R.id.classType);
+        Spinner assignmentType = (Spinner) findViewById(R.id.categoryType);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.itemCategories, R.layout.support_simple_spinner_dropdown_item);
         assignmentType.setAdapter(adapter);
 
@@ -97,6 +98,7 @@ public class CreateActivity extends AppCompatActivity {
             implements DatePickerDialog.OnDateSetListener {
 
         @Override
+        @NonNull
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker
             final Calendar c = Calendar.getInstance();
@@ -112,14 +114,11 @@ public class CreateActivity extends AppCompatActivity {
             // Do something with the date chosen by the user
             final Calendar c = Calendar.getInstance();
             Button button = (Button) getActivity().findViewById(R.id.dateSelection);
-            int selectedYear = view.getYear();
-            int selectedMonth = view.getMonth();
-            int selectedDay = view.getDayOfMonth();
-            c.set(Calendar.YEAR, selectedYear);
-            c.set(Calendar.MONTH, selectedMonth);
-            c.set(Calendar.DAY_OF_MONTH, selectedDay);
+            c.set(Calendar.YEAR, year);
+            c.set(Calendar.MONTH, month);
+            c.set(Calendar.DAY_OF_MONTH, day);
 
-            button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
+            button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + Integer.toString(day)+ ", " + Integer.toString(year));
 
         }
     }
