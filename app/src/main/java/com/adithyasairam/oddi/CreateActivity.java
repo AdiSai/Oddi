@@ -117,13 +117,13 @@ public class CreateActivity extends AppCompatActivity {
         });
 
         //populate spinners with values
-        final Spinner assignmentType = (Spinner) findViewById(R.id.categoryType);
+        mCategoryType = (Spinner) findViewById(R.id.categoryType);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.itemCategories, R.layout.support_simple_spinner_dropdown_item);
-        assignmentType.setAdapter(adapter);
-        assignmentType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mCategoryType.setAdapter(adapter);
+        mCategoryType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String selectedVal = assignmentType.getItemAtPosition(i).toString();
+                String selectedVal = mCategoryType.getItemAtPosition(i).toString();
                 if ("Project".equals(selectedVal)){
                     LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
                     collabLayout.setVisibility(View.VISIBLE);
@@ -173,9 +173,9 @@ public class CreateActivity extends AppCompatActivity {
                 assignmentList = new ArrayList<>(0);
             }
 
-            Spinner classSpinner = (Spinner) findViewById(R.id.classType);
+            mClassType = (Spinner) findViewById(R.id.classType);
             ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, classList.toArray());
-            classSpinner.setAdapter(adapter2);
+            mClassType.setAdapter(adapter2);
 
         } catch (Exception e) {
             e.printStackTrace();
