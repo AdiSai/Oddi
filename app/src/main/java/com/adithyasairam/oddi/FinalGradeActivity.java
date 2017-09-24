@@ -27,14 +27,15 @@ public class FinalGradeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             EditText currentGrade = (EditText)findViewById(R.id.currentGrade);
-                float currentGradeFloat = (Float.parseFloat(currentGrade.getText().toString())/100);
+                double currentGradeFloat = (Float.parseFloat(currentGrade.getText().toString()))/100.00000;
             EditText wantedGrade = (EditText)findViewById(R.id.goalClassGrade);
-                float wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString())/100);
+                double wantedGradeFloat = (Float.parseFloat(wantedGrade.getText().toString()))/100.00000;
             EditText gradeWeight = (EditText)findViewById(R.id.weightGrade);
-                float weight = (Float.parseFloat(gradeWeight.getText().toString())/100);
+                double weight = (Float.parseFloat(gradeWeight.getText().toString())/100.00000);
                 if (currentGrade.getText() != null && wantedGrade.getText() != null && gradeWeight.getText() != null)
                 {
-                    float neededGrade = (((wantedGradeFloat - ((currentGradeFloat) * (1 - weight)))/(weight))/(100));
+                    float neededGrade = ((((currentGradeFloat) * (1 - weight)) + ((wantedGradeFloat) * 100);
+
                     TextView resultantView = (TextView) findViewById(R.id.gradeOutput);
                     resultantView.setText("You need a " + String.format("%.2f", neededGrade) +
                             "% in order to get a " + Float.toString(wantedGradeFloat*100) + "% in the class. Good Luck!" );
