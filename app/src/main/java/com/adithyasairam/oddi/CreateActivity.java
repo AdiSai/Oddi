@@ -2,28 +2,38 @@ package com.adithyasairam.oddi;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.adithyasairam.oddi.pojos.Assignment;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -36,6 +46,12 @@ public class CreateActivity extends AppCompatActivity {
 
     String category;
     String classType;
+    TextView mTextView;
+
+
+    List<String> phoneNums;
+    final int SELECT_PHONE_NUMBER =  1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +59,10 @@ public class CreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mTextView = (TextView) findViewById(R.id.collaboratorTV);
+        phoneNums = new ArrayList<>();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,18 +85,61 @@ public class CreateActivity extends AppCompatActivity {
                 {
                     e.printStackTrace();
                 }
+
+                //once saved, do the message thing
+                StringBuilder phoneNumBuilder = new StringBuilder();
+                for (String s : phoneNums) {
+                    phoneNumBuilder.append(s + "; ");
+                }
+                phoneNumBuilder = phoneNumBuilder.delete(phoneNumBuilder.length() - 2, phoneNumBuilder.length());
+                Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                i.putExtra("address", phoneNumBuilder.toString());
+                i.putExtra("sms_body", "This group chat is for the (X) project");
+                i.setType("vnd.android-dir/mms-sms");
+                startActivity(i);
+
             }
         });
 
         //populate spinners with values
-        Spinner assignmentType = (Spinner) findViewById(R.id.categoryType);
+        final Spinner assignmentType = (Spinner) findViewById(R.id.categoryType);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.itemCategories, R.layout.support_simple_spinner_dropdown_item);
         assignmentType.setAdapter(adapter);
-        //hello
+        assignmentType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedVal = assignmentType.getItemAtPosition(i).toString();
+                if ("Project".equals(selectedVal)){
+                    LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
+                    collabLayout.setVisibility(View.VISIBLE);
+                }
+                else{
+                    LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
+                    collabLayout.setVisibility(View.INVISIBLE);
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
+        });
 
         Button button = (Button) findViewById(R.id.dateSelection);
         final Calendar c = Calendar.getInstance();
         button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
+
+        //COLLAB SECTION
+        Button collabBtn = (Button) findViewById(R.id.collaboratorButton);
+        collabBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_PICK);
+                i.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+                startActivityForResult(i, SELECT_PHONE_NUMBER);
+            }
+        });
+
 
     }
     public boolean onCreateOptionsMenu(Menu menu)
@@ -123,6 +186,26 @@ public class CreateActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SELECT_PHONE_NUMBER && resultCode == RESULT_OK) {
+            // Get the URI and query the content provider for the phone number
+            Uri contactUri = data.getData();
+            String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.NUMBER};
+            Cursor cursor = this.getContentResolver().query(contactUri, projection,
+                    null, null, null);
+
+            // If the cursor returned is valid, get the phone number
+            if (cursor != null && cursor.moveToFirst()) {
+                int numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(numberIndex);
+                // Do something with the phone number
+                phoneNums.add(number);
+                mTextView.append("\n" + number); //+ Contact Info
+            }
+            cursor.close();
+        }
+    }
 
 }
 

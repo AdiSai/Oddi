@@ -7,7 +7,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.adithyasairam.oddi.CreateActivity"
     tools:showIn="@layout/activity_create"
-    >
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
 
 
@@ -27,22 +28,24 @@
         android:layout_marginTop="16dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.503" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/categoryType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="87dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/classTypeTV"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/nameText"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <Spinner
         android:id="@+id/classType"
@@ -53,11 +56,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="60dp"
-        app:layout_constraintTop_toBottomOf="@+id/categoryType"
+        android:layout_marginTop="165dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/dateSelection"
         android:layout_width="0dp"
@@ -69,12 +71,57 @@
         android:onClick="showDatePickerDialog"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="@+id/classType"
-        android:layout_marginTop="49dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="58dp"
         app:layout_constraintTop_toBottomOf="@+id/classType"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/classType"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/collaboratorLayout"
+        android:layout_width="0dp"
+        android:weightSum="1"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/dateSelection"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintLeft_toLeftOf="@+id/dateSelection"
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <TextView
+            android:id="@+id/collaboratorTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Collaborators: "
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize"
+            tools:layout_constraintBottom_creator="1"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="153dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_weight=".8" />
+
+        <Button
+            android:id="@+id/collaboratorButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="359dp"
+            android:layout_weight=".2"
+            android:text="+"/>
+
+    </LinearLayout>
+
+
 
     <TextView
         android:id="@+id/categoryTypeTV"
@@ -87,8 +134,7 @@
         app:layout_constraintBottom_toTopOf="@+id/categoryType"
         android:layout_marginStart="8dp"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintLeft_toLeftOf="@+id/categoryType" />
 
     <TextView
         android:id="@+id/classTypeTV"
@@ -101,8 +147,7 @@
         app:layout_constraintBottom_toTopOf="@+id/classType"
         android:layout_marginStart="8dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="@+id/classType" />
 
     <TextView
         android:id="@+id/dueDate"
@@ -115,8 +160,11 @@
         app:layout_constraintBottom_toTopOf="@+id/dateSelection"
         android:layout_marginStart="8dp"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="7dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginBottom="2dp"
+        app:layout_constraintLeft_toLeftOf="@+id/dateSelection"
+        android:layout_marginLeft="8dp" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>
