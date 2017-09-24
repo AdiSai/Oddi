@@ -1,5 +1,6 @@
 package com.adithyasairam.oddi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.adithyasairam.oddi.pojos.Assignment;
@@ -20,7 +24,8 @@ public class TimelineActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
 
-    Map<String, Assignment> assignmentMap =  null;
+    Map<String, Assignment> assignmentMap = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +36,20 @@ public class TimelineActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            { Intent intent = new Intent (TimelineActivity.this, CreateActivity.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(TimelineActivity.this, CreateActivity.class);
                 startActivity(intent);
             }
         });
+       public boolean onCreateOptionsMenu(Menu menu)
+    {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.timeline,menu);
+        inflater.inflate(R.menu.classes,menu);
+        inflater.inflate(R.menu.finalgradecalculator,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLinearLayoutManager = new LinearLayoutManager(this);
@@ -44,17 +58,15 @@ public class TimelineActivity extends AppCompatActivity {
             FileInputStream fis = new FileInputStream("assignment.ser");
             ObjectInputStream ois = new ObjectInputStream(fis);
             assignmentMap = (Map<String, Assignment>) ois.readObject();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         //todo load classes and assignments from file
 
     }
-    public void openFGC(View view)
-    {
+
+    public void openFGC(View view) {
         Intent intent = new Intent(TimelineActivity.this, FinalGradeActivity.class);
         startActivity(intent);
     }
