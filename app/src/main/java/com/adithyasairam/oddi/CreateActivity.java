@@ -126,6 +126,7 @@ public class CreateActivity extends AppCompatActivity {
                 if ("Project".equals(selectedVal)){
                     LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
                     collabLayout.setVisibility(View.VISIBLE);
+                    category  = assignmentType.getSelectedItem().toString();
                 }
                 else{
                     LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
@@ -162,9 +163,25 @@ public class CreateActivity extends AppCompatActivity {
 
 
 
-            Spinner classSpinner = (Spinner) findViewById(R.id.classType);
+            final Spinner classSpinner = (Spinner) findViewById(R.id.classType);
             ArrayAdapter adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, classList.toArray());
+            //ArrayAdapter adapter2 = ArrayAdapter.createFromResource(this, R.array.classCategories, R.layout.support_simple_spinner_dropdown_item);
+            classSpinner.setAdapter(adapter2);
+            classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    String selectedVal = assignmentType.getItemAtPosition(i).toString();
+                    LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
+                    collabLayout.setVisibility(View.VISIBLE);
+                    classType = classSpinner.getSelectedItem().toString();
 
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
