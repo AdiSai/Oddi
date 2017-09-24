@@ -53,7 +53,7 @@ public class CollabActivity extends AppCompatActivity {
         });
         phoneNums = new ArrayList<>();
         mTextView = (TextView)findViewById(R.id.textView);
-        mButton = (Button)findViewById(R.id.buttonAdd);
+        mButton = (Button)findViewById(R.id.buttonAddCollab);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

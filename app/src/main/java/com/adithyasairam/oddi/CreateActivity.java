@@ -44,6 +44,8 @@ public class CreateActivity extends AppCompatActivity {
     private Spinner mCategoryType;
     private Spinner mClassType;
 
+    final static Calendar c = Calendar.getInstance();
+
     String category;
     String classType;
     TextView mTextView;
@@ -67,36 +69,46 @@ public class CreateActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = mName.getText().toString();
-                String date = mDateEntryField.getText().toString();
-                Assignment assignment = new Assignment(name, category, classType, date);
-                Log.d("ASSIGNMENT", assignment.toString());
-                Map<String, Assignment> assignmentMap =  new HashMap<>();
-                assignmentMap.put(assignment.key(), assignment);
-                try
-                {
-                    FileOutputStream fos = new FileOutputStream("assignment.ser");
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    oos.writeObject(assignmentMap);
-                    oos.close();
-                    fos.close();
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
+
+                //input verification
+                EditText nameText = (EditText) findViewById(R.id.nameText);
+                boolean isNameEmpty = (null == nameText.getText() || "".equals(nameText.getText()));
+
+                Button dateButton = (Button) findViewById(R.id.dateSelection);
+                boolean isInvalidDate = (dateButton.getText().toString().equals("DATE"));
+
+
+                boolean isAnyPointEmpty = isNameEmpty || isInvalidDate;
+                if(!isAnyPointEmpty) {
+                    String name = mName.getText().toString();
+                    String date = mDateEntryField.getText().toString();
+                    Assignment assignment = new Assignment(name, category, classType, date);
+                    Log.d("ASSIGNMENT", assignment.toString());
+                    Map<String, Assignment> assignmentMap = new HashMap<>();
+                    assignmentMap.put(assignment.key(), assignment);
+                    try {
+                        FileOutputStream fos = new FileOutputStream("assignment.ser");
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        oos.writeObject(assignmentMap);
+                        oos.close();
+                        fos.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    //once saved, do the message thing
+                    StringBuilder phoneNumBuilder = new StringBuilder();
+                    for (String s : phoneNums) {
+                        phoneNumBuilder.append(s + "; ");
+                    }
+                    phoneNumBuilder = phoneNumBuilder.delete(phoneNumBuilder.length() - 2, phoneNumBuilder.length());
+                    Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+                    i.putExtra("address", phoneNumBuilder.toString());
+                    i.putExtra("sms_body", "This group chat is for the (X) project");
+                    i.setType("vnd.android-dir/mms-sms");
+                    startActivity(i);
                 }
 
-                //once saved, do the message thing
-                StringBuilder phoneNumBuilder = new StringBuilder();
-                for (String s : phoneNums) {
-                    phoneNumBuilder.append(s + "; ");
-                }
-                phoneNumBuilder = phoneNumBuilder.delete(phoneNumBuilder.length() - 2, phoneNumBuilder.length());
-                Intent i = new Intent(android.content.Intent.ACTION_VIEW);
-                i.putExtra("address", phoneNumBuilder.toString());
-                i.putExtra("sms_body", "This group chat is for the (X) project");
-                i.setType("vnd.android-dir/mms-sms");
-                startActivity(i);
 
             }
         });
@@ -124,9 +136,9 @@ public class CreateActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
+        //inits ubtton text
         Button button = (Button) findViewById(R.id.dateSelection);
-        final Calendar c = Calendar.getInstance();
-        button.setText(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + c.get(Calendar.MONTH)+ ", " + c.get(Calendar.YEAR));
+        button.setText("DATE");
 
         //COLLAB SECTION
         Button collabBtn = (Button) findViewById(R.id.collaboratorButton);
@@ -175,7 +187,6 @@ public class CreateActivity extends AppCompatActivity {
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            final Calendar c = Calendar.getInstance();
             Button button = (Button) getActivity().findViewById(R.id.dateSelection);
             c.set(Calendar.YEAR, year);
             c.set(Calendar.MONTH, month);
