@@ -111,15 +111,6 @@ public class CreateActivity extends AppCompatActivity {
                     i.setType("vnd.android-dir/mms-sms");
                     startActivity(i);
                 }
-                try {
-                    File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
-                    FileInputStream fis = new FileInputStream(file);
-                    ObjectInputStream ois = new ObjectInputStream(fis);
-                    Map<String, Assignment> assignmentMap = (Map<String, Assignment>) ois.readObject();
-                    assignmentList = new ArrayList<>(assignmentMap.values());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
 
@@ -161,7 +152,15 @@ public class CreateActivity extends AppCompatActivity {
                 startActivityForResult(i, SELECT_PHONE_NUMBER);
             }
         });
-
+        try {
+            File file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "assignment.ser");
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Map<String, Assignment> assignmentMap = (Map<String, Assignment>) ois.readObject();
+            assignmentList = new ArrayList<>(assignmentMap.values());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
     public boolean onCreateOptionsMenu(Menu menu)
