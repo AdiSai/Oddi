@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -50,16 +51,18 @@ public class TimelineActivity extends AppCompatActivity {
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
             assignmentMap = (Map<String, Assignment>) ois.readObject();
-            file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "class.ser");
+            /*file = new File(OddiApp.getInternalDataDir().getAbsolutePath(), "class.ser");
             fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
             classMap = (Map<String, Class>) ois.readObject();
-            ArrayList<Class> classList = new ArrayList<>(classMap.values());
+            ArrayList<Class> classList = new ArrayList<>(classMap.values());*/
             ArrayList<Assignment> assignmentList = new ArrayList<>(assignmentMap.values());
 
 
             mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             recyclerAdapter = new RecyclerAdapter(assignmentList);
+            mRecyclerView.setAdapter(recyclerAdapter);
+            Log.i("TEStING", assignmentList.toString());
 
         } catch (Exception e) {
             e.printStackTrace();

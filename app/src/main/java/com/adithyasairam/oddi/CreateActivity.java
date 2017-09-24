@@ -135,7 +135,6 @@ public class CreateActivity extends AppCompatActivity {
                 else{
                     LinearLayout collabLayout = (LinearLayout) findViewById(R.id.collaboratorLayout);
                     collabLayout.setVisibility(View.INVISIBLE);
-
                 }
             }
 
